@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDangNhap = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -80,14 +80,15 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Quyền truy cập";
             // 
-            // button1
+            // btnDangNhap
             // 
-            this.button1.Location = new System.Drawing.Point(31, 138);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Đăng nhập";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Location = new System.Drawing.Point(31, 138);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(75, 23);
+            this.btnDangNhap.TabIndex = 2;
+            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // button2
             // 
@@ -127,7 +128,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnDangNhap);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.textBox2);
@@ -164,7 +165,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;

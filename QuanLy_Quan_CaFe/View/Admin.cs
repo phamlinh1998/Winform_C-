@@ -15,16 +15,17 @@ namespace QuanLy_Quan_CaFe
         public Admin()
         {
             InitializeComponent();
+                       
         }
        
         private void Admin_Load(object sender, EventArgs e)
         {
-            
+            ttPro.SetToolTip(btnProduct, "Quản Lý Sản Phẩm");
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnProduct_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
     
