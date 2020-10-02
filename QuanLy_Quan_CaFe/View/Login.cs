@@ -25,8 +25,9 @@ namespace QuanLy_Quan_CaFe
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            Admin admin_form = new Admin();
-            admin_form.Show();
+            //Admin admin_form = new Admin();
+            //admin_form.Show();
+            
         }
     }
 }
