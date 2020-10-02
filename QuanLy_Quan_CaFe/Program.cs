@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLy_Quan_CaFe.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace QuanLy_Quan_CaFe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new History());
         }
     }
 }
