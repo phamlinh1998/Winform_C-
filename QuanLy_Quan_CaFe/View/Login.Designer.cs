@@ -34,9 +34,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.cbRole = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -99,41 +99,42 @@
             this.button2.Text = "Thoát";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtUser
             // 
-            this.textBox1.Location = new System.Drawing.Point(98, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(126, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtUser.Location = new System.Drawing.Point(98, 26);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(126, 20);
+            this.txtUser.TabIndex = 3;
             // 
-            // textBox2
+            // txtPass
             // 
-            this.textBox2.Location = new System.Drawing.Point(98, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(126, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtPass.Location = new System.Drawing.Point(98, 60);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(126, 20);
+            this.txtPass.TabIndex = 3;
             // 
-            // comboBox1
+            // cbRole
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Items.AddRange(new object[] {
             "Quản Lý",
             "Nhân Viên"});
-            this.comboBox1.Location = new System.Drawing.Point(98, 97);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cbRole.Location = new System.Drawing.Point(98, 97);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(100, 21);
+            this.cbRole.TabIndex = 4;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.btnDangNhap);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cbRole);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtPass);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtUser);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(509, 27);
@@ -167,9 +168,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.Panel panel1;
     }
 }

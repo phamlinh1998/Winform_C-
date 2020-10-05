@@ -17,7 +17,7 @@ namespace QuanLy_Quan_CaFe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new History());
+            Application.Run(new Product());
         }
     }
 }

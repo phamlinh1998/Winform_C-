@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\AccountDAO.cs" />
+    <Compile Include="DAO\productDAO.cs" />
+    <Compile Include="Server\ConnectionDB.cs" />
     <Compile Include="View\Admin.cs">
       <SubType>Form</SubType>
     </Compile>

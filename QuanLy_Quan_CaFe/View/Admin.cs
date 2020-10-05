@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLy_Quan_CaFe.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,7 +26,9 @@ namespace QuanLy_Quan_CaFe
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            
+            Product pro_form = new Product();
+            this.Hide();
+            pro_form.Show();
         }
     }
     
