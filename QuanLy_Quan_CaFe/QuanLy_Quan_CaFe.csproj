@@ -47,7 +47,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
+    <Compile Include="DAO\BillformDAO.cs" />
+    <Compile Include="DAO\EmployeeDAO.cs" />
+    <Compile Include="DAO\MenuDAO.cs" />
+    <Compile Include="DAO\OrderDAO.cs" />
+    <Compile Include="DAO\OrderDetailDAO.cs" />
     <Compile Include="DAO\productDAO.cs" />
+    <Compile Include="DAO\productTypeDAO.cs" />
+    <Compile Include="DAO\tableDAO.cs" />
+    <Compile Include="entities\Menu.cs" />
+    <Compile Include="entities\Order.cs" />
+    <Compile Include="entities\OrderDetail.cs" />
+    <Compile Include="entities\product.cs" />
+    <Compile Include="entities\ProductType.cs" />
+    <Compile Include="entities\table.cs" />
     <Compile Include="Server\ConnectionDB.cs" />
     <Compile Include="View\Admin.cs">
       <SubType>Form</SubType>
@@ -60,6 +73,12 @@
     </Compile>
     <Compile Include="View\BillForm.Designer.cs">
       <DependentUpon>BillForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Employee.Designer.cs">
+      <DependentUpon>Employee.cs</DependentUpon>
     </Compile>
     <Compile Include="View\History.cs">
       <SubType>Form</SubType>
@@ -92,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BillForm.resx">
       <DependentUpon>BillForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Employee.resx">
+      <DependentUpon>Employee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\History.resx">
       <DependentUpon>History.cs</DependentUpon>

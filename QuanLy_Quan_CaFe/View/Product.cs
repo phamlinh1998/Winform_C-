@@ -17,14 +17,17 @@ namespace QuanLy_Quan_CaFe.View
         public Product()
         {
             InitializeComponent();
-            load_cbLSP();
-            panelTK.Visible = false;
+
+            panelGia.Visible = false;
+            panelNhom.Visible = false;
+            txtTKTen.Visible = false;
+            btnTK.Visible = false;
             btnDeleteSP.Enabled = false;
             btnUpdateSP.Enabled = false;
         }
         public void load_LoaiSP()
         {
-            
+
             string query = "select IDType as[Mã],TypeName as [Tên loại],Size as [Kích cỡ] from ProductType ORDER BY IDType DESC";
             dtgvLoaiSP.DataSource = ConnectionDB.Instance.ExcuteQuery(query);
         }
@@ -34,23 +37,39 @@ namespace QuanLy_Quan_CaFe.View
             dt = productDAO.Instance.load_cbLSP();
             foreach (DataRow item in dt.Rows)
             {
-                cbNameType.Items.Add(item["TypeName"].ToString());
+                string ten = item["TypeName"].ToString();
+                cbNameType.Items.Add(ten);
+
+            }
+        }
+        public void load_cbTKSP()
+        {
+            DataTable dt = new DataTable();
+            dt = productDAO.Instance.load_cbLSP();
+            foreach (DataRow item in dt.Rows)
+            {
+                string ten = item["TypeName"].ToString();
+                cbLoaiTK.Items.Add(ten);
+
             }
         }
         public void load_SP()
         {
             dtgvSP.DataSource = productDAO.Instance.hienthiSP();
+            
         }
-        
+
         private void Product_Load(object sender, EventArgs e)
         {
             load_LoaiSP();
             load_SP();
+            load_cbLSP();
+            load_cbTKSP();
         }
 
         private void dtgvLoaiSP_SelectionChanged(object sender, EventArgs e)
         {
-            if (dtgvLoaiSP.CurrentRow !=null)
+            if (dtgvLoaiSP.CurrentRow != null)
             {
                 var row = dtgvLoaiSP.CurrentRow;
                 txtIDProductType.Text = row.Cells[0].Value.ToString();
@@ -74,7 +93,7 @@ namespace QuanLy_Quan_CaFe.View
             txtNameType.Text = "";
             cbLSP.SelectedIndex = -1;
         }
-
+        private bool check = false;
         private void btnThemLoaiSP_Click(object sender, EventArgs e)
         {
             string ma = txtIDProductType.Text;
@@ -82,6 +101,7 @@ namespace QuanLy_Quan_CaFe.View
             string kichco = cbLSP.SelectedItem.ToString();
             productDAO.Instance.themloaisp(ma, ten, kichco);
             load_LoaiSP();
+            check = true;
         }
 
         private void btnSuaLoaiSP_Click(object sender, EventArgs e)
@@ -113,7 +133,7 @@ namespace QuanLy_Quan_CaFe.View
             //    string ma = row.Cells[2].Value.ToString();
             //    DataTable dt = new DataTable();
             //    dt = productDAO.Instance.TenLoaiSPTheoID(ma);
-                
+
             //    cbNameType.SelectedItem = dt.Rows[0]["TypeName"].ToString();
             //}
         }
@@ -150,7 +170,7 @@ namespace QuanLy_Quan_CaFe.View
             string kichco = cbKichCo.SelectedItem.ToString();
 
             DataTable dt = new DataTable();
-            dt = productDAO.Instance.layIDLoaiSP(loaiSP,kichco);
+            dt = productDAO.Instance.layIDLoaiSP(loaiSP, kichco);
 
             string id = dt.Rows[0]["IDType"].ToString();
 
@@ -159,5 +179,112 @@ namespace QuanLy_Quan_CaFe.View
 
         }
 
+        public void resetSP()
+        {
+            txtIDProduct.Text = "";
+            txtNameproduct.Text = "";
+            cbNameType.SelectedIndex = -1;
+            txtPrice.Text = "";
+            cbKichCo.SelectedIndex = -1;
+            btnAddSP.Enabled = true;
+            btnDeleteSP.Enabled = false;
+            btnUpdateSP.Enabled = false;
+            cbLoaiTK.SelectedIndex = -1;
+            cbTKKichCo.SelectedIndex = -1;
+            txtDen.Text = "";
+            txtGiaTu.Text = "";
+            txtTKTen.Text = "";
+        }
+        private void btnResetSP_Click(object sender, EventArgs e)
+        {
+            resetSP();
+            load_SP();
+        }
+
+        private void btnDeleteSP_Click(object sender, EventArgs e)
+        {
+            string ma = txtIDProduct.Text;
+            productDAO.Instance.xoaSP(ma);
+            load_SP();
+            resetSP();
+        }
+
+        private void btnUpdateSP_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            string tenlsp = cbNameType.SelectedItem.ToString();
+            string kichco = cbKichCo.SelectedItem.ToString();
+            dt = productDAO.Instance.layIDLoaiSP(tenlsp,kichco);
+
+            string ten = txtNameproduct.Text;
+            string maloai = dt.Rows[0]["IDType"].ToString();
+            string gia = txtPrice.Text;
+            string id = txtIDProduct.Text;
+            productDAO.Instance.suaSP(ten, maloai, gia, id);
+            load_SP();
+            resetSP();
+        }
+        private void cbTK_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (cbTK.SelectedIndex == 0)
+            {
+                txtTKTen.Visible = true;
+                panelNhom.Visible = false;
+                panelGia.Visible = false;
+                btnTK.Visible = true;
+            }
+            if (cbTK.SelectedIndex == 1)
+            {
+                panelGia.Visible = true;
+                txtTKTen.Visible = false;
+                panelNhom.Visible = false;
+                btnTK.Visible = true;
+            }
+            if (cbTK.SelectedIndex == 2)
+            {
+                txtTKTen.Visible = false;
+                panelNhom.Visible = true;
+                panelGia.Visible = false;
+                btnTK.Visible = true;
+            }
+        }
+
+        private void btnTK_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            while (dtgvSP.Rows.Count != 0)
+            {
+                dtgvSP.Rows.RemoveAt(0);
+            }
+            
+            if (cbTK.SelectedIndex == 0)
+            {
+                
+                string ten = txtTKTen.Text;
+                dt = productDAO.Instance.tkTheoTen(ten);
+                dtgvSP.DataSource = dt;
+                
+            }
+
+            if (cbTK.SelectedIndex == 1)
+            {
+                
+                int giatu = Convert.ToInt32(txtGiaTu.Text);
+                int giaden = Convert.ToInt32(txtDen.Text);
+                dt = productDAO.Instance.tkTheoGia(giatu,giaden);
+                dtgvSP.DataSource = dt;
+                
+            }
+
+            if (cbTK.SelectedIndex == 2)
+            {
+                string tensp = cbLoaiTK.SelectedItem.ToString();
+                string kichco = cbTKKichCo.SelectedItem.ToString();
+                dt = productDAO.Instance.tkTheoNhom(tensp, kichco);
+                dtgvSP.DataSource = dt;
+                
+            }
+        }
     }
 }

@@ -46,16 +46,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelTK = new System.Windows.Forms.Panel();
-            this.txtTKTen = new System.Windows.Forms.TextBox();
-            this.txtGiaTu = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtDen = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.panelNhom = new System.Windows.Forms.Panel();
             this.cbLoaiTK = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.cbTKKichCo = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.panelGia = new System.Windows.Forms.Panel();
+            this.txtGiaTu = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtDen = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtTKTen = new System.Windows.Forms.TextBox();
+            this.btnTK = new System.Windows.Forms.Button();
             this.dtgvSP = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnResetSP = new System.Windows.Forms.Button();
@@ -66,7 +68,7 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtIDProduct = new System.Windows.Forms.TextBox();
             this.cbKichCo = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cbTK = new System.Windows.Forms.ComboBox();
             this.cbNameType = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -80,6 +82,8 @@
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panelTK.SuspendLayout();
+            this.panelNhom.SuspendLayout();
+            this.panelGia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSP)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -261,7 +265,7 @@
             this.tabPage2.Controls.Add(this.txtPrice);
             this.tabPage2.Controls.Add(this.txtIDProduct);
             this.tabPage2.Controls.Add(this.cbKichCo);
-            this.tabPage2.Controls.Add(this.comboBox4);
+            this.tabPage2.Controls.Add(this.cbTK);
             this.tabPage2.Controls.Add(this.cbNameType);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
@@ -277,85 +281,42 @@
             // 
             // panelTK
             // 
+            this.panelTK.Controls.Add(this.panelNhom);
+            this.panelTK.Controls.Add(this.panelGia);
             this.panelTK.Controls.Add(this.txtTKTen);
-            this.panelTK.Controls.Add(this.txtGiaTu);
-            this.panelTK.Controls.Add(this.label9);
-            this.panelTK.Controls.Add(this.button2);
-            this.panelTK.Controls.Add(this.label10);
-            this.panelTK.Controls.Add(this.txtDen);
-            this.panelTK.Controls.Add(this.label11);
-            this.panelTK.Controls.Add(this.cbLoaiTK);
-            this.panelTK.Controls.Add(this.cbTKKichCo);
-            this.panelTK.Controls.Add(this.label12);
+            this.panelTK.Controls.Add(this.btnTK);
             this.panelTK.Location = new System.Drawing.Point(334, 45);
             this.panelTK.Name = "panelTK";
             this.panelTK.Size = new System.Drawing.Size(245, 231);
             this.panelTK.TabIndex = 6;
             // 
-            // txtTKTen
+            // panelNhom
             // 
-            this.txtTKTen.Location = new System.Drawing.Point(33, 12);
-            this.txtTKTen.Name = "txtTKTen";
-            this.txtTKTen.Size = new System.Drawing.Size(155, 20);
-            this.txtTKTen.TabIndex = 2;
-            // 
-            // txtGiaTu
-            // 
-            this.txtGiaTu.Location = new System.Drawing.Point(81, 51);
-            this.txtGiaTu.Name = "txtGiaTu";
-            this.txtGiaTu.Size = new System.Drawing.Size(107, 20);
-            this.txtGiaTu.TabIndex = 2;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 58);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Giá Từ";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(55, 194);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 34);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Tìm Kiếm";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(23, 81);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Giá Đến";
-            // 
-            // txtDen
-            // 
-            this.txtDen.Location = new System.Drawing.Point(81, 81);
-            this.txtDen.Name = "txtDen";
-            this.txtDen.Size = new System.Drawing.Size(107, 20);
-            this.txtDen.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(30, 118);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Nhóm";
+            this.panelNhom.Controls.Add(this.cbLoaiTK);
+            this.panelNhom.Controls.Add(this.label11);
+            this.panelNhom.Controls.Add(this.cbTKKichCo);
+            this.panelNhom.Controls.Add(this.label12);
+            this.panelNhom.Location = new System.Drawing.Point(21, 111);
+            this.panelNhom.Name = "panelNhom";
+            this.panelNhom.Size = new System.Drawing.Size(193, 64);
+            this.panelNhom.TabIndex = 5;
             // 
             // cbLoaiTK
             // 
             this.cbLoaiTK.FormattingEnabled = true;
-            this.cbLoaiTK.Location = new System.Drawing.Point(81, 115);
+            this.cbLoaiTK.Location = new System.Drawing.Point(60, 6);
             this.cbLoaiTK.Name = "cbLoaiTK";
             this.cbLoaiTK.Size = new System.Drawing.Size(107, 21);
             this.cbLoaiTK.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Nhóm";
             // 
             // cbTKKichCo
             // 
@@ -364,7 +325,7 @@
             "Vừa",
             "Nhỏ",
             "Lớn"});
-            this.cbTKKichCo.Location = new System.Drawing.Point(81, 148);
+            this.cbTKKichCo.Location = new System.Drawing.Point(60, 40);
             this.cbTKKichCo.Name = "cbTKKichCo";
             this.cbTKKichCo.Size = new System.Drawing.Size(107, 21);
             this.cbTKKichCo.TabIndex = 1;
@@ -372,11 +333,71 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(30, 148);
+            this.label12.Location = new System.Drawing.Point(5, 43);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Kích cỡ";
+            // 
+            // panelGia
+            // 
+            this.panelGia.Controls.Add(this.txtGiaTu);
+            this.panelGia.Controls.Add(this.label9);
+            this.panelGia.Controls.Add(this.txtDen);
+            this.panelGia.Controls.Add(this.label10);
+            this.panelGia.Location = new System.Drawing.Point(21, 38);
+            this.panelGia.Name = "panelGia";
+            this.panelGia.Size = new System.Drawing.Size(177, 67);
+            this.panelGia.TabIndex = 4;
+            // 
+            // txtGiaTu
+            // 
+            this.txtGiaTu.Location = new System.Drawing.Point(60, 10);
+            this.txtGiaTu.Name = "txtGiaTu";
+            this.txtGiaTu.Size = new System.Drawing.Size(107, 20);
+            this.txtGiaTu.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 13);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Giá Từ";
+            // 
+            // txtDen
+            // 
+            this.txtDen.Location = new System.Drawing.Point(60, 40);
+            this.txtDen.Name = "txtDen";
+            this.txtDen.Size = new System.Drawing.Size(107, 20);
+            this.txtDen.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 47);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Giá Đến";
+            // 
+            // txtTKTen
+            // 
+            this.txtTKTen.Location = new System.Drawing.Point(33, 12);
+            this.txtTKTen.Name = "txtTKTen";
+            this.txtTKTen.Size = new System.Drawing.Size(155, 20);
+            this.txtTKTen.TabIndex = 2;
+            // 
+            // btnTK
+            // 
+            this.btnTK.Location = new System.Drawing.Point(55, 194);
+            this.btnTK.Name = "btnTK";
+            this.btnTK.Size = new System.Drawing.Size(115, 34);
+            this.btnTK.TabIndex = 3;
+            this.btnTK.Text = "Tìm Kiếm";
+            this.btnTK.UseVisualStyleBackColor = true;
+            this.btnTK.Click += new System.EventHandler(this.btnTK_Click);
             // 
             // dtgvSP
             // 
@@ -413,6 +434,7 @@
             this.btnResetSP.TabIndex = 3;
             this.btnResetSP.Text = "Làm Mới";
             this.btnResetSP.UseVisualStyleBackColor = true;
+            this.btnResetSP.Click += new System.EventHandler(this.btnResetSP_Click);
             // 
             // btnDeleteSP
             // 
@@ -424,6 +446,7 @@
             this.btnDeleteSP.TabIndex = 3;
             this.btnDeleteSP.Text = "Xóa";
             this.btnDeleteSP.UseVisualStyleBackColor = true;
+            this.btnDeleteSP.Click += new System.EventHandler(this.btnDeleteSP_Click);
             // 
             // btnUpdateSP
             // 
@@ -435,6 +458,7 @@
             this.btnUpdateSP.TabIndex = 3;
             this.btnUpdateSP.Text = "Sửa";
             this.btnUpdateSP.UseVisualStyleBackColor = true;
+            this.btnUpdateSP.Click += new System.EventHandler(this.btnUpdateSP_Click);
             // 
             // btnAddSP
             // 
@@ -480,24 +504,25 @@
             this.cbKichCo.Size = new System.Drawing.Size(155, 21);
             this.cbKichCo.TabIndex = 1;
             // 
-            // comboBox4
+            // cbTK
             // 
-            this.comboBox4.DisplayMember = "(none)";
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.cbTK.DisplayMember = "(none)";
+            this.cbTK.FormattingEnabled = true;
+            this.cbTK.Items.AddRange(new object[] {
             "Tên",
             "Giá",
             "Nhóm"});
-            this.comboBox4.Location = new System.Drawing.Point(334, 18);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(214, 21);
-            this.comboBox4.TabIndex = 1;
-            this.comboBox4.Text = "---Tìm kiếm theo---";
+            this.cbTK.Location = new System.Drawing.Point(334, 18);
+            this.cbTK.Name = "cbTK";
+            this.cbTK.Size = new System.Drawing.Size(214, 21);
+            this.cbTK.TabIndex = 1;
+            this.cbTK.Text = "---Tìm kiếm theo---";
+            this.cbTK.SelectedIndexChanged += new System.EventHandler(this.cbTK_SelectedIndexChanged);
             // 
             // cbNameType
             // 
             this.cbNameType.FormattingEnabled = true;
-            this.cbNameType.Location = new System.Drawing.Point(140, 118);
+            this.cbNameType.Location = new System.Drawing.Point(140, 126);
             this.cbNameType.Name = "cbNameType";
             this.cbNameType.Size = new System.Drawing.Size(155, 21);
             this.cbNameType.TabIndex = 1;
@@ -523,7 +548,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(49, 126);
+            this.label6.Location = new System.Drawing.Point(49, 130);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 0;
@@ -568,6 +593,10 @@
             this.tabPage2.PerformLayout();
             this.panelTK.ResumeLayout(false);
             this.panelTK.PerformLayout();
+            this.panelNhom.ResumeLayout(false);
+            this.panelNhom.PerformLayout();
+            this.panelGia.ResumeLayout(false);
+            this.panelGia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSP)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -602,13 +631,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNameproduct;
         private System.Windows.Forms.ComboBox cbKichCo;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cbTK;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnResetSP;
         private System.Windows.Forms.Button btnDeleteSP;
         private System.Windows.Forms.Button btnUpdateSP;
         private System.Windows.Forms.Button btnAddSP;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnTK;
         private System.Windows.Forms.TextBox txtGiaTu;
         private System.Windows.Forms.TextBox txtDen;
         private System.Windows.Forms.TextBox txtTKTen;
@@ -620,5 +649,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dtgvSP;
         private System.Windows.Forms.Panel panelTK;
+        private System.Windows.Forms.Panel panelNhom;
+        private System.Windows.Forms.Panel panelGia;
     }
 }
