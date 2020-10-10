@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.txtNV = new System.Windows.Forms.TextBox();
+            this.nmSoLuong = new System.Windows.Forms.NumericUpDown();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnThanhToan = new System.Windows.Forms.Button();
@@ -42,11 +43,11 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.flTable = new System.Windows.Forms.FlowLayoutPanel();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.cbKichco = new System.Windows.Forms.ComboBox();
             this.cbLsp = new System.Windows.Forms.ComboBox();
             this.cbTensp = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,24 +59,21 @@
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.giớiThiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chiTiếtHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtNV = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmSoLuong)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.txtNV);
-            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.nmSoLuong);
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnThanhToan);
             this.panel1.Controls.Add(this.lstOrder);
             this.panel1.Controls.Add(this.flTable);
             this.panel1.Controls.Add(this.btnXoa);
-            this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.cbKichco);
             this.panel1.Controls.Add(this.cbLsp);
@@ -89,22 +87,30 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(823, 527);
+            this.panel1.Size = new System.Drawing.Size(845, 527);
             this.panel1.TabIndex = 0;
             // 
-            // numericUpDown1
+            // txtNV
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(285, 265);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.txtNV.Location = new System.Drawing.Point(451, 267);
+            this.txtNV.Name = "txtNV";
+            this.txtNV.Size = new System.Drawing.Size(148, 20);
+            this.txtNV.TabIndex = 14;
+            this.txtNV.Text = "phamlinh";
+            // 
+            // nmSoLuong
+            // 
+            this.nmSoLuong.Location = new System.Drawing.Point(285, 265);
+            this.nmSoLuong.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(54, 20);
-            this.numericUpDown1.TabIndex = 13;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nmSoLuong.Name = "nmSoLuong";
+            this.nmSoLuong.Size = new System.Drawing.Size(54, 20);
+            this.nmSoLuong.TabIndex = 13;
+            this.nmSoLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nmSoLuong.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -117,7 +123,7 @@
             this.txtTotal.Location = new System.Drawing.Point(706, 384);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(95, 26);
+            this.txtTotal.Size = new System.Drawing.Size(127, 26);
             this.txtTotal.TabIndex = 12;
             this.txtTotal.Text = "0";
             // 
@@ -141,6 +147,7 @@
             this.btnThanhToan.TabIndex = 8;
             this.btnThanhToan.Text = "Thanh Toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // lstOrder
             // 
@@ -160,6 +167,7 @@
             this.lstOrder.TabIndex = 10;
             this.lstOrder.UseCompatibleStateImageBehavior = false;
             this.lstOrder.View = System.Windows.Forms.View.Details;
+            this.lstOrder.Click += new System.EventHandler(this.lstOrder_Click);
             // 
             // columnHeader2
             // 
@@ -196,7 +204,7 @@
             this.flTable.AutoScroll = true;
             this.flTable.Location = new System.Drawing.Point(12, 36);
             this.flTable.Name = "flTable";
-            this.flTable.Size = new System.Drawing.Size(799, 205);
+            this.flTable.Size = new System.Drawing.Size(821, 205);
             this.flTable.TabIndex = 9;
             // 
             // btnXoa
@@ -208,16 +216,7 @@
             this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
-            // 
-            // btnSua
-            // 
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(618, 261);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(109, 36);
-            this.btnSua.TabIndex = 8;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
@@ -255,6 +254,15 @@
             this.cbTensp.Size = new System.Drawing.Size(100, 21);
             this.cbTensp.TabIndex = 6;
             this.cbTensp.SelectedIndexChanged += new System.EventHandler(this.cbTensp_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(369, 269);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Tên nhân viên";
             // 
             // label2
             // 
@@ -300,7 +308,7 @@
             this.chiTiếtHóaĐơnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(823, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(845, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -344,28 +352,11 @@
             this.chiTiếtHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
             this.chiTiếtHóaĐơnToolStripMenuItem.Text = "Chi Tiết Hóa Đơn";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(369, 269);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Tên nhân viên";
-            // 
-            // txtNV
-            // 
-            this.txtNV.Location = new System.Drawing.Point(451, 267);
-            this.txtNV.Name = "txtNV";
-            this.txtNV.Size = new System.Drawing.Size(148, 20);
-            this.txtNV.TabIndex = 14;
-            this.txtNV.Text = "linh";
-            // 
             // BillForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 527);
+            this.ClientSize = new System.Drawing.Size(845, 527);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "BillForm";
@@ -373,7 +364,7 @@
             this.Load += new System.EventHandler(this.BillForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmSoLuong)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -407,11 +398,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbLsp;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nmSoLuong;
         private System.Windows.Forms.TextBox txtNV;
         private System.Windows.Forms.Label label6;
     }

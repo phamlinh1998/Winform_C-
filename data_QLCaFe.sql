@@ -131,11 +131,18 @@ create proc IDLoaiSPTheoTen
 	@TypeName nvarchar(50)
 as
 begin
-	select DISTINCT IDType from ProductType where TypeName=N'Cà phê'@TypeName
+	select DISTINCT IDType from ProductType where TypeName=@TypeName
+end
+
+go
+alter proc IDSPTheoTen
+	@ProductName nvarchar(100),
+	@Size nvarchar(10)
+as
+begin
+	select Product.IDProduct from Product join ProductType on Product.IDType = ProductType.IDType where Product.ProductName=@ProductName and ProductType.Size=@Size
 end
 go
-	select Size from Product join ProductType ON Product.IDType = ProductType.IDType
-	where TypeName = N'Cà Phê' and ProductName = N'Cà phê đá'
 Create proc layIDLoaiSP
 	@ten nvarchar(50),
 	@kichco nvarchar(10)
@@ -246,8 +253,7 @@ begin
 end
 go
 create proc layDSMenuTheoBan
-	@idTable INT,
-	
+	@idTable INT	
 as
 begin
 	select od.IDOrder,ProductName,pt.Size,odd.Quantity,p.Price,p.Price*odd.Quantity as TotaPrice 
@@ -264,13 +270,97 @@ begin
 	insert into Orders values(GETDATE(),NULL,@UsernameEmp,@idTable,0)
 end
 go
-Create proc themOrderDetail
+alter proc themOrderDetail
 	@IDOrder int,
 	@IDProduct varchar(20),
-	@Quantity int	
+	@Quantity int,
+	@size nvarchar(10)	
 as
 begin
-	insert into OrderDetails values(@IDOrder,@IDProduct,@Quantity)
+	declare @check int
+	declare @kichthuoc nvarchar(10)	
+	declare @productCount int = 1 
+	select @kichthuoc = ProductType.Size from ProductType join Product on ProductType.IDType = Product.IDType where IDProduct=@IDProduct  
+	select  @check= IDOrder , @productCount = Quantity from OrderDetails where IDOrder = @IDOrder and IDProduct= @IDProduct  
+	if(@check > 0 and @size = @kichthuoc)
+	begin
+		declare @newCount int =  @productCount + @Quantity
+		if(@newCount >0)
+		begin
+			update OrderDetails set Quantity = @productCount + @Quantity where IDProduct = @IDProduct
+		end
+		else
+		begin
+			delete OrderDetails where IDOrder = @IDOrder and IDProduct = @IDProduct
+		end
+		
+	end
+
+	else
+	begin
+		insert into OrderDetails values(@IDOrder,@IDProduct,@Quantity)
+	end
+	
+end
+go
+create proc suaOrderDetail
+	@IDProduct varchar(20),
+	@Quantity int,
+	@IDOrder int
+	
+as
+begin
+	update OrderDetails set IDProduct =@IDProduct ,Quantity=@Quantity where IDOrder =@IDOrder 
+	 update OrderDetails set IDProduct ='CF02' ,Quantity=2 where IDOrder =9
+end
+go
+create proc updateSTTBill
+	@IDOrder INT
+as
+begin
+	update Orders set DateCheckOut = GETDATE(),status = 1 where IDOrder = @IDOrder
+end
+select * from OrderDetails
+select Max(IDOrder) from Orders
+--------------TẠO TRIGGER------------------------
+
+go
+alter trigger update_OrdersDetail
+on OrderDetails for insert ,update,delete
+as
+begin
+declare @count int =0
+	declare @idOrder int
+	select @idOrder = IDOrder from inserted
+
+	declare @idtable int
+	select @idtable = idTable from Orders where IDOrder = @idOrder and status = 0
+
+	update TableFood set status =N'Có Người' where id = @idtable
+
+	--select @idtable = Orders.idTable   from deleted join Orders on deleted.IDOrder = Orders.IDOrder
+		--select @count = COUNT(*) from Orders where idtable = @idTable and status = 0
+
+	--if(@count =0)
+		--update TableFood set status = N'Trống' where id = @idtable
+end
+go
+
+create trigger update_Orders
+on Orders for update
+as
+begin
+	declare @idOrder int
+	select @idOrder = IDOrder from inserted
+
+	declare @idtable int
+	declare @count int =0
+	select @idtable = idTable from Orders where IDOrder = @idOrder
+
+	select @count = COUNT(*) from Orders where idtable = @idTable and status = 0
+
+	if(@count =0)
+		update TableFood set status = N'Trống' where id = @idtable
 end
 -------------------------------------------------
 --------------THÊM DỮ LIỆU-----------------------
@@ -310,11 +400,12 @@ Insert into Product values('CF01', N'Cà phê đá', 'T01', 20000)
 Insert into Product values('CF02', N'Cà phê đá', 'T02', 25000)
 Insert into Product values('CF03', N'Cà phê đá', 'T03', 30000)
 
-SELECT *FROM Orders
+select * from Orders
 select * from OrderDetails
+select * from productType
 select * from product
 select * from TableFood
-
+update TableFood set status =N'Trống' where id = 2
 Insert into Orders values(GETDATE(),GETDATE(),'phamlinh',1,0)
 
 Insert into OrderDetails values(3,'CF02',2)

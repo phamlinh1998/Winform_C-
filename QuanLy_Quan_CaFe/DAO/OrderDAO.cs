@@ -34,6 +34,26 @@ namespace QuanLy_Quan_CaFe.DAO
         public void themOrder(string ten,int ban)
         {
             ConnectionDB.Instance.ExcuteQuery("exec themOrder N'"+ten+"',"+ban+"");
+
+        }
+
+        public int MaxIDBill()
+        {
+            try
+            {
+                return (int)ConnectionDB.Instance.ExcuteScalar("select Max(IDOrder) from Orders");
+            }
+            catch (Exception)
+            {
+
+                return 1;
+            }
+        }
+
+        public void checkOut(int id)
+        {
+           
+            ConnectionDB.Instance.ExcuteNonQuery("exec updateSTTBill "+id+"");
         }
     }
 }

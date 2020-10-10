@@ -78,5 +78,34 @@ namespace QuanLy_Quan_CaFe.Server
             }
             return data;
         }
+
+        public object ExcuteScalar(string query, object[] para = null)
+        {
+            object data = 0;
+            using (SqlConnection conn = new SqlConnection(chuoi_ket_noi))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                //truyền tham số cho câu lệnh query
+                if (para != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            cmd.Parameters.AddWithValue(item, para[i]);
+                            i++;
+                        }
+                    }
+                }
+                data = cmd.ExecuteScalar();
+
+                conn.Close();
+            }
+            return data;
+        }
     }
 }
