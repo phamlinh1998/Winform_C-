@@ -14,7 +14,7 @@ namespace QuanLy_Quan_CaFe.View
 {
     public partial class Product : Form
     {
-        public Product()
+        public Product(Admin ad)
         {
             InitializeComponent();
 
@@ -24,7 +24,9 @@ namespace QuanLy_Quan_CaFe.View
             btnTK.Visible = false;
             btnDeleteSP.Enabled = false;
             btnUpdateSP.Enabled = false;
+            frmAdmin = ad;
         }
+        Admin frmAdmin;
         public void load_LoaiSP()
         {
 
@@ -284,6 +286,16 @@ namespace QuanLy_Quan_CaFe.View
                 dt = productDAO.Instance.tkTheoNhom(tensp, kichco);
                 dtgvSP.DataSource = dt;
                 
+            }
+        }
+
+        private void Product_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Dispose();
+                this.Close();
+                frmAdmin.Show();
             }
         }
     }

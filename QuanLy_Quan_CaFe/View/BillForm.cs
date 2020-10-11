@@ -17,14 +17,14 @@ namespace QuanLy_Quan_CaFe.View
 {
     public partial class BillForm : Form
     {
-        public BillForm()
+        public BillForm( Login lg)
         {
             InitializeComponent();
             load_table();
             load_loaisp();
-            
+            frmlogin= lg;
         }
-
+        Login frmlogin;
         public void load_loaisp()
         {
             //List<ProductType> listproductType = productTypeDAO.Instance.layDSLoaiSP();
@@ -222,5 +222,33 @@ namespace QuanLy_Quan_CaFe.View
             //table tb = lstOrder.Tag as table;
             //show_bill(tb.ID);
         }
+
+        private void giớiThiệuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutUs ab = new AboutUs();
+            ab.ShowDialog();
+        }
+
+        private void BillForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            frmlogin.Show();
+            this.Dispose();
+            this.Close();
+        }
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmlogin.Show();
+            this.Dispose();
+            this.Close();
+        }
+        //public void dongForm()
+        //{
+        //    if (MessageBox.Show("Bạn muốn đóng form?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+        //    {                
+        //        this.Close();
+        //        frmlogin.Show();
+        //    }
+        //}
     }
 }

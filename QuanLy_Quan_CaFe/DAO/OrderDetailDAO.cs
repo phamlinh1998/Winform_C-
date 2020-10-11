@@ -32,10 +32,14 @@ namespace QuanLy_Quan_CaFe.DAO
             return listData;
         }
 
-        public void themOrderDetail(int madh,string masp, int sl)
+        public void suaOrderDetail(string masp, int sl,int mdh)
         {
-            ConnectionDB.Instance.ExcuteQuery("exec themOrderDetail "+ madh + "," + masp + "," + sl + "");
+            ConnectionDB.Instance.ExcuteQuery("exec suaOrderDetail " + masp + "," + sl + ","+ mdh + "");
+        }
 
+        public void themOrderDetail(int madh, string masp, int sl, string kichco)
+        {
+            ConnectionDB.Instance.ExcuteQuery("exec themOrderDetail " + madh + "," + masp + "," + sl + ",N'" + kichco + "'");
         }
     }
 }

@@ -582,6 +582,7 @@
             this.Name = "Product";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Product";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Product_FormClosed);
             this.Load += new System.EventHandler(this.Product_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);

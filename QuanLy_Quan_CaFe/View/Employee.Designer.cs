@@ -359,6 +359,7 @@
             this.Controls.Add(this.dtgvEmp);
             this.Name = "Employee";
             this.Text = "Quản lý nhân viên";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Employee_FormClosed);
             this.Load += new System.EventHandler(this.Employee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvEmp)).EndInit();
             this.panelRadio.ResumeLayout(false);

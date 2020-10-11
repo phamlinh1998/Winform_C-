@@ -36,7 +36,15 @@ namespace QuanLy_Quan_CaFe.DAO
         public DataTable laytenLSP()
         {
             DataTable dt = new DataTable();
-            string query = "exec LayTenLoaiSP ";
+            string query = "select Distinct TypeName from  ProductType";
+            dt = ConnectionDB.Instance.ExcuteQuery(query);
+            return dt;
+        }
+
+        public DataTable laytenLSPTheoSP(string ma)
+        {
+            DataTable dt = new DataTable();
+            string query = "select TypeName from  ProductType join Product on ProductType.IDType = Product.IDType where ProductName = N'"+ma+"'";
             dt = ConnectionDB.Instance.ExcuteQuery(query);
             return dt;
         }

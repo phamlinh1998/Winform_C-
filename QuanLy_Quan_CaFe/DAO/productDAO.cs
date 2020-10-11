@@ -80,6 +80,14 @@ namespace QuanLy_Quan_CaFe.DAO
             return dt;
         }
 
+        public DataTable IDSPTheoTen(string ten,string kichco)
+        {
+            DataTable dt = new DataTable();
+            string query = "exec IDSPTheoTen N'" + ten + "',N'"+kichco+"'";
+            dt = ConnectionDB.Instance.ExcuteQuery(query);
+            return dt;
+        }
+
         public void themSP(string ma,string ten,string id,string gia)
         {
             string query = "exec themSP N'"+ma+ "',N'" + ten + "',N'" + id + "'," + gia + "";

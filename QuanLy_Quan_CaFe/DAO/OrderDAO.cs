@@ -55,5 +55,31 @@ namespace QuanLy_Quan_CaFe.DAO
            
             ConnectionDB.Instance.ExcuteNonQuery("exec updateSTTBill "+id+"");
         }
+
+        public DataTable load_DSDH()
+        {
+            DataTable dt = new DataTable();
+            string query = "exec load_DSDH";
+            dt = ConnectionDB.Instance.ExcuteQuery(query);
+
+            return dt;
+        }
+        public DataTable tkTheoMDH(int ma)
+        {
+            DataTable dt = new DataTable();
+            string query = "exec tkTheoMDH "+ma+"";
+            dt = ConnectionDB.Instance.ExcuteQuery(query);
+
+            return dt;
+        }
+
+        public DataTable tkTheoNgay(string d)
+        {
+            DataTable dt = new DataTable();
+            string query = "exec tkTheoNgay '"+d+"'";
+            dt = ConnectionDB.Instance.ExcuteQuery(query);
+
+            return dt;
+        }
     }
 }

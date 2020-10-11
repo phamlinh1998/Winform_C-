@@ -236,6 +236,37 @@ as
 begin
 	update Employee set Password=@Password,Phone=@Phone,Email=@Email,Address=@Address where Username = @Username
 end
+-------------------ĐƠN HÀNG-----------------
+go
+alter proc load_DSDH
+as
+begin
+	select od.IDOrder as [Mã đơn hàng],p.IDProduct as [Mã sản phẩm],odd.Quantity as [Số lượng],od.DateCheckOut as [Ngày thanh toán],od.UsernameEmp as [Tên nhân viên],p.Price as [Đơn giá],[Thành tiền] = odd.Quantity * p.Price
+	from Orders od join OrderDetails odd on od.IDOrder = odd.IDOrder
+	join Product p on p.IDProduct = odd.IDProduct
+end
+
+go
+create proc tkTheoMDH
+	@IDOrder int
+as
+begin
+	select od.IDOrder as [Mã đơn hàng],p.IDProduct as [Mã sản phẩm],odd.Quantity as [Số lượng],od.DateCheckOut as [Ngày thanh toán],od.UsernameEmp as [Tên nhân viên],p.Price as [Đơn giá],[Thành tiền] = odd.Quantity * p.Price
+	from Orders od join OrderDetails odd on od.IDOrder = odd.IDOrder
+	join Product p on p.IDProduct = odd.IDProduct
+	where od.IDOrder = @IDOrder
+end
+
+go
+create proc tkTheoNgay
+	@DateCheckOut DATE
+as
+begin
+	select od.IDOrder as [Mã đơn hàng],p.IDProduct as [Mã sản phẩm],odd.Quantity as [Số lượng],od.DateCheckOut as [Ngày thanh toán],od.UsernameEmp as [Tên nhân viên],p.Price as [Đơn giá],[Thành tiền] = odd.Quantity * p.Price
+	from Orders od join OrderDetails odd on od.IDOrder = odd.IDOrder
+	join Product p on p.IDProduct = odd.IDProduct
+	where od.DateCheckOut = @DateCheckOut
+end
 go
 create proc layHoaDonTheoTableID
 	@idTable INT

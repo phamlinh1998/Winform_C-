@@ -31,7 +31,7 @@ namespace QuanLy_Quan_CaFe
             {
                 if (AccountDAO.Instance.login(admin, userName, pass))
                 {
-                    Admin admin_form = new Admin();
+                    Admin admin_form = new Admin(this);
                     this.Hide();
                     admin_form.Show();
                 }
@@ -44,7 +44,7 @@ namespace QuanLy_Quan_CaFe
             {
                 if (AccountDAO.Instance.login(emp,userName, pass))
                 {
-                    BillForm Bill_Form = new BillForm();
+                    BillForm Bill_Form = new BillForm(this);
                     this.Hide();
                     Bill_Form.Show();
                 }
@@ -58,6 +58,17 @@ namespace QuanLy_Quan_CaFe
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             isEmpty();           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel,     MessageBoxIcon.Question) == DialogResult.OK)
+            {
+
+                Application.Exit();
+            }
+
         }
     }
 }

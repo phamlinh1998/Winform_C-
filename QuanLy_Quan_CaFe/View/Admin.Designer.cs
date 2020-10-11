@@ -56,20 +56,23 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(385, 124);
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(371, 124);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(140, 121);
+            this.button4.Size = new System.Drawing.Size(148, 131);
             this.button4.TabIndex = 2;
-            this.button4.Text = "button2";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnEmp
             // 
+            this.btnEmp.Image = ((System.Drawing.Image)(resources.GetObject("btnEmp.Image")));
             this.btnEmp.Location = new System.Drawing.Point(199, 124);
             this.btnEmp.Name = "btnEmp";
-            this.btnEmp.Size = new System.Drawing.Size(140, 121);
+            this.btnEmp.Size = new System.Drawing.Size(140, 131);
             this.btnEmp.TabIndex = 2;
             this.btnEmp.UseVisualStyleBackColor = true;
+            this.btnEmp.Click += new System.EventHandler(this.btnEmp_Click);
             // 
             // btnProduct
             // 
@@ -77,7 +80,7 @@
             this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
             this.btnProduct.Location = new System.Drawing.Point(24, 124);
             this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(140, 121);
+            this.btnProduct.Size = new System.Drawing.Size(140, 131);
             this.btnProduct.TabIndex = 2;
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
@@ -91,6 +94,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Đăng Xuất";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -113,6 +117,7 @@
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Admin_FormClosed);
             this.Load += new System.EventHandler(this.Admin_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

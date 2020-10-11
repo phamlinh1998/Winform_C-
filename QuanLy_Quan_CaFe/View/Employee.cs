@@ -14,11 +14,12 @@ namespace QuanLy_Quan_CaFe.View
 {
     public partial class Employee : Form
     {
-        public Employee()
+        public Employee(Admin ad)
         {
             InitializeComponent();
-            
+            frmAdmin = ad;
         }
+        Admin frmAdmin;
         public void load_emp()
         {
 
@@ -158,6 +159,16 @@ namespace QuanLy_Quan_CaFe.View
 
             EmployeeDAO.Instance.suaNV(pass,phone,email,address,ten);
             load_emp();
+        }
+
+        private void Employee_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Dispose();
+                this.Close();
+                frmAdmin.Show();
+            }
         }
     }
 }

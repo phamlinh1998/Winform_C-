@@ -33,8 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,18 +62,37 @@
     <Compile Include="DAO\productDAO.cs" />
     <Compile Include="DAO\productTypeDAO.cs" />
     <Compile Include="DAO\tableDAO.cs" />
+    <Compile Include="entities\BaoCaoDH.cs" />
     <Compile Include="entities\Menu.cs" />
     <Compile Include="entities\Order.cs" />
     <Compile Include="entities\OrderDetail.cs" />
     <Compile Include="entities\product.cs" />
     <Compile Include="entities\ProductType.cs" />
     <Compile Include="entities\table.cs" />
+    <Compile Include="Report\BaoCaoDH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaoCaoDH.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Server\ConnectionDB.cs" />
+    <Compile Include="View\AboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AboutUs.Designer.cs">
+      <DependentUpon>AboutUs.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BaoCaoDHrpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BaoCaoDHrpt.Designer.cs">
+      <DependentUpon>BaoCaoDHrpt.cs</DependentUpon>
     </Compile>
     <Compile Include="View\BillForm.cs">
       <SubType>Form</SubType>
@@ -106,8 +132,18 @@
     <Compile Include="View\Product.designer.cs">
       <DependentUpon>Product.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\BaoCaoDH.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BaoCaoDH.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AboutUs.resx">
+      <DependentUpon>AboutUs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BaoCaoDHrpt.resx">
+      <DependentUpon>BaoCaoDHrpt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\BillForm.resx">
       <DependentUpon>BillForm.cs</DependentUpon>
@@ -155,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\back_Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
