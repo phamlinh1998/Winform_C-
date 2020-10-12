@@ -17,12 +17,12 @@ namespace QuanLy_Quan_CaFe.View
 {
     public partial class BillForm : Form
     {
-        public BillForm( Login lg)
+        public BillForm( Login lg,string name)
         {
             InitializeComponent();
-            load_table();
-            load_loaisp();
+            
             frmlogin= lg;
+            txtNV.Text = name;
         }
         Login frmlogin;
         public void load_loaisp()
@@ -122,7 +122,11 @@ namespace QuanLy_Quan_CaFe.View
         }
         private void BillForm_Load(object sender, EventArgs e)
         {
-            
+            load_table();
+            load_loaisp();
+            cbLsp.SelectedIndex = 0;
+            cbTensp.SelectedIndex = 0;
+            cbKichco.SelectedIndex = 0;
         }
 
         private void cbLsp_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,9 +154,20 @@ namespace QuanLy_Quan_CaFe.View
             DataTable dt = new DataTable();
             dt = productDAO.Instance.IDSPTheoTen(cbTensp.SelectedItem.ToString(),cbKichco.SelectedItem.ToString());
             string ma = dt.Rows[0]["IDProduct"].ToString();
-            
+            while (true)
+            {
+                if (tb == null)
+                {
+                    MessageBox.Show("Chưa chọn bàn", "Thông báo");
+                    return;
+                }
+                else
+                {
+                    break;
+                }
+            }
             int idBill = OrderDAO.Instance.layHoaDonTheoTableID(tb.ID);
-
+            
             int count = (int)nmSoLuong.Value;
             if (idBill == -1)
             {
@@ -214,13 +229,20 @@ namespace QuanLy_Quan_CaFe.View
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            //string tensp = cbTensp.SelectedItem.ToString();
-            //DataTable dt = ConnectionDB.Instance.ExcuteQuery("select IDProduct from Product where ProductName = N'" + tensp + "'");
-            //   string masp = dt.Rows[0]["IDProduct"].ToString();
-            
-            //ConnectionDB.Instance.ExcuteQuery("delete from OrderDetails where IDProduct =N'" + masp + "'");
-            //table tb = lstOrder.Tag as table;
-            //show_bill(tb.ID);
+            string tensp = cbTensp.SelectedItem.ToString();
+            DataTable dt = ConnectionDB.Instance.ExcuteQuery("select IDProduct from Product where ProductName = N'" + tensp + "'");
+            string masp = dt.Rows[0]["IDProduct"].ToString();
+
+            ConnectionDB.Instance.ExcuteQuery("delete from OrderDetails where IDProduct =N'" + masp + "'");
+            table tb = lstOrder.Tag as table;
+            show_bill(tb.ID);
+            if (lstOrder.Items.Count == 0)
+            {
+                ConnectionDB.Instance.ExcuteQuery("delete Orders where idTable = " + tb.ID + "");
+                ConnectionDB.Instance.ExcuteQuery("update TableFood set status =N'Trống' where id = " + tb.ID + "");
+            }
+            show_bill(tb.ID);
+            load_table();
         }
 
         private void giớiThiệuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -242,13 +264,17 @@ namespace QuanLy_Quan_CaFe.View
             this.Dispose();
             this.Close();
         }
-        //public void dongForm()
-        //{
-        //    if (MessageBox.Show("Bạn muốn đóng form?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-        //    {                
-        //        this.Close();
-        //        frmlogin.Show();
-        //    }
-        //}
+
+        private void thôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            infoEmp info = new infoEmp(txtNV.Text);
+            info.ShowDialog();
+        }
+
+        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PassChangeEmpp passch = new PassChangeEmpp(txtNV.Text);
+            passch.ShowDialog();
+        }
     }
 }

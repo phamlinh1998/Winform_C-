@@ -43,5 +43,23 @@ namespace QuanLy_Quan_CaFe.DAO
             string query = "exec sua_Emp @Password , @Phone , @Email , @Address , @Username ";
             ConnectionDB.Instance.ExcuteQuery(query, new object[] { pass,phone,email,diachi,ten });
         }
+
+        public DataTable layEmpTheoID(string name)
+        {
+            DataTable dt = new DataTable();
+            dt =ConnectionDB.Instance.ExcuteQuery("exec lay_EmpTheoID "+name+"");
+            return dt;
+        }
+
+        public string layPassEmp(string name)
+        {
+            DataTable dt = new DataTable();
+            dt = ConnectionDB.Instance.ExcuteQuery("exec layPassEmp " + name + "");
+            return dt.Rows[0]["Password"].ToString();
+        }
+        public void updatePassEmp(string pass,string name)
+        {
+             ConnectionDB.Instance.ExcuteQuery("exec updatePassEmp " + pass + "," + name + "");
+        }
     }
 }

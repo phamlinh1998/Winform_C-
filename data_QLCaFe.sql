@@ -236,6 +236,32 @@ as
 begin
 	update Employee set Password=@Password,Phone=@Phone,Email=@Email,Address=@Address where Username = @Username
 end
+
+go
+create proc lay_EmpTheoID
+	@Username varchar(50)
+as
+begin
+	select * from Employee where Username =@Username
+end
+
+go
+create proc layPassEmp
+	@Username varchar(50)
+as
+begin
+	select Password from Employee where Username =@Username
+end
+go
+alter proc updatePassEmp
+	@Password varchar(20),
+	@Username varchar(50)
+as
+begin
+	update Employee set Password =@Password where Username =@Username
+	
+end
+
 -------------------ĐƠN HÀNG-----------------
 go
 alter proc load_DSDH
@@ -431,7 +457,7 @@ Insert into Product values('CF01', N'Cà phê đá', 'T01', 20000)
 Insert into Product values('CF02', N'Cà phê đá', 'T02', 25000)
 Insert into Product values('CF03', N'Cà phê đá', 'T03', 30000)
 
-select * from Orders
+select * from Orders 
 select * from OrderDetails
 select * from productType
 select * from product

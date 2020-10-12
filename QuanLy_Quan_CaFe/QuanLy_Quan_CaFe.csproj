@@ -112,6 +112,12 @@
     <Compile Include="View\History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\infoEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\infoEmp.Designer.cs">
+      <DependentUpon>infoEmp.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,12 @@
     </Compile>
     <Compile Include="View\Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PassChangeEmpp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PassChangeEmpp.Designer.cs">
+      <DependentUpon>PassChangeEmpp.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Product.cs">
       <SubType>Form</SubType>
@@ -154,6 +166,9 @@
     <EmbeddedResource Include="View\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\infoEmp.resx">
+      <DependentUpon>infoEmp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +184,9 @@
     </Compile>
     <EmbeddedResource Include="View\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PassChangeEmpp.resx">
+      <DependentUpon>PassChangeEmpp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Product.resx">
       <DependentUpon>Product.cs</DependentUpon>
